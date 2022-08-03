@@ -1,0 +1,6 @@
+*.DS_STORE
+*.pyc
+
+# bazel tmp files
+bazel*
+
