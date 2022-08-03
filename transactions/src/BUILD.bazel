@@ -1,9 +1,42 @@
 load("@python_deps//:requirements.bzl", "requirement")
 
 py_library(
+	name = "constants",
+	srcs = ["constants.py"],
+)
+
+py_library(
 	name = "account",
 	srcs = ["account.py"],
 	deps = [
 		requirement("pynacl")
+	]
+)
+
+py_library(
+	name = "restclient",
+	srcs = ["restclient.py"],
+	deps = [
+		":account",
+		requirement("requests")
+	]
+)
+
+py_library(
+	name = "faucetclient",
+	srcs = ["faucetclient.py"],
+	deps = [
+		":restclient",
+		requirement("requests")
+	]
+)
+
+py_binary(
+	name = "run_example",
+	srcs = ["run_example.py"],
+	deps = [
+		":account",
+		":restclient",
+		":faucetclient"
 	]
 )

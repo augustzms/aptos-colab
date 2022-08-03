@@ -16,7 +16,7 @@ class Account:
         return self.auth_key()
 
     def auth_key(self) -> str:
-        hasher = hashlib.sha_256()
+        hasher = hashlib.sha3_256()
         hasher.update(self.signing_key.verify_key.encode() + b'\x00')
         return hasher.hexdigest()
 
