@@ -4,7 +4,7 @@ from account import Account
 from faucetclient import FaucetClient
 from restclient import RestClient
 
-def run():
+def run() -> None:
     rest_client = RestClient(constants.TESTNET_URL)
     faucet_client = FaucetClient(constants.FAUCET_URL, rest_client)
 
